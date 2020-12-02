@@ -759,6 +759,8 @@ func (s *Service) logTillChainStart() {
 		secondsLeft = params.BeaconConfig().MinGenesisTime - genesisTime
 	}
 
+	log.WithFields(logrus.Fields{"minGenesisTime": params.BeaconConfig().MinGenesisTime, "genesisTime": genesisTime})
+
 	fields := logrus.Fields{
 		"Additional validators needed": valNeeded,
 	}

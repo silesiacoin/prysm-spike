@@ -28,9 +28,10 @@ func L14Config() *BeaconChainConfig {
 	// TODO: you've got to pump this numbers up
 	cfg.MinGenesisActiveValidatorCount = 1
 	// Dec 1, 2020, 12pm UTC.
-	cfg.MinGenesisTime = 1606824000
+	cfg.MinGenesisTime = 1605700800
+	cfg.GenesisDelay = 43200
 	cfg.NetworkName = "l14"
-	cfg.GenesisForkVersion = []byte{0x00, 0x00, 0x20, 0x09}
+	cfg.GenesisDelay = 0
 	cfg.SecondsPerETH1Block = 5
 	return cfg
 }
