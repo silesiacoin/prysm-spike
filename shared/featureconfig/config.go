@@ -34,6 +34,7 @@ type Flags struct {
 	// Testnet Flags.
 	ToledoTestnet  bool // ToledoTestnet defines the flag through which we can enable the node to run on the Toledo testnet.
 	PyrmontTestnet bool // PyrmontTestnet defines the flag through which we can enable the node to run on the Pyrmont testnet.
+	L14TestNet     bool // L14Testnet defines the flag through which we can enable the node to run on the Lukso l14 testnet.
 
 	// Feature related flags.
 	WriteSSZStateTransitions           bool // WriteSSZStateTransitions to tmp directory.
@@ -111,15 +112,33 @@ func configureTestnet(ctx *cli.Context, cfg *Flags) {
 		params.UseToledoConfig()
 		params.UseToledoNetworkConfig()
 		cfg.ToledoTestnet = true
-	} else if ctx.Bool(PyrmontTestnet.Name) {
+
+		return
+	}
+
+	if ctx.Bool(PyrmontTestnet.Name) {
 		log.Warn("Running on Pyrmont Testnet")
 		params.UsePyrmontConfig()
 		params.UsePyrmontNetworkConfig()
 		cfg.PyrmontTestnet = true
-	} else {
-		log.Warn("Running on ETH2 Mainnet")
-		params.UseMainnetConfig()
+
+		return
 	}
+
+	if ctx.Bool(L14TestNet.Name) {
+		log.Warn("Running on lyxe Testnet")
+		params.UseL14Config()
+		params.UseL14NetworkConfig()
+		cfg.L14TestNet = true
+
+		return
+	}
+
+	log.Warn("Running on ETH2 Mainnet")
+	params.UseMainnetConfig()
+
+	return
+
 }
 
 // ConfigureBeaconChain sets the global config based

@@ -15,6 +15,10 @@ var (
 		Name:  "pyrmont",
 		Usage: "This defines the flag through which we can run on the Pyrmont Multiclient Testnet",
 	}
+	L14TestNet = &cli.BoolFlag{
+		Name:  "l14",
+		Usage: "This is POA Authority round lukso network",
+	}
 	// Mainnet flag for easier tooling, no-op
 	Mainnet = &cli.BoolFlag{
 		Value: true,
@@ -103,6 +107,7 @@ var ValidatorFlags = append(deprecatedFlags, []cli.Flag{
 	enableExternalSlasherProtectionFlag,
 	ToledoTestnet,
 	PyrmontTestnet,
+	L14TestNet,
 	Mainnet,
 	disableAccountsV2,
 	disableBlst,
@@ -113,6 +118,7 @@ var SlasherFlags = append(deprecatedFlags, []cli.Flag{
 	disableLookbackFlag,
 	ToledoTestnet,
 	PyrmontTestnet,
+	L14TestNet,
 	Mainnet,
 }...)
 
@@ -128,6 +134,7 @@ var BeaconChainFlags = append(deprecatedFlags, []cli.Flag{
 	attestationAggregationStrategy,
 	ToledoTestnet,
 	PyrmontTestnet,
+	L14TestNet,
 	Mainnet,
 	disableBlst,
 	disableEth1DataMajorityVote,
